@@ -1,15 +1,35 @@
-# Checkpoint 2 - JS
+# Brief – Checkpoint React & Algorithms
+## 📌 Contexte
 
-## Rappel - Que sont les checkpoints ?
+Ce projet s’inscrit dans le cadre d’un checkpoint chez Simplon, visant à évaluer les compétences acquises en React et en algorithmique JavaScript.
 
-Pour rappel un **checkpoint** est un terme utilisé dans la Wild Code School pour décrire une **auto-évaluation dans un temps donné**. Elle dure généralement une demi-journée (jusqu'à une journée complète ou plus).
+Un checkpoint est une auto-évaluation réalisée dans un temps limité (généralement une demi-journée à une journée complète). Il permet de mesurer la progression et la maîtrise des notions abordées pendant la formation.
 
-Ces checkpoints sont conçus pour atteindre un certain nombre d’objectifs en te présentant :
+## 🎯 Objectifs pédagogiques
 
-> 1. ... une façon de mesurer tes progrès 📏📈
-> 2. ... la possibilité d'utiliser tes compétences acquises dans un objectif qui a du sens 🚩🥅
-> 3. ... la possibilité d'exercer les compétences de gestion du temps et de priorisation ⌛⬆️
-> 4. ... l'opportunité de revoir et d'apprendre du code des autres, montrant qu'il existe toujours de nombreuses façons différentes d'accomplir une tâche 👥💬
+- Ce checkpoint a pour objectifs de :
+
+Évaluer la compréhension des fondamentaux de React (composants, props, state, gestion des événements, routing, etc.).
+
+Mettre en pratique les concepts clés de l’algorithmique en JavaScript (ES6+).
+
+Développer la capacité à structurer et organiser un projet.
+
+Renforcer les compétences en gestion du temps et en priorisation.
+
+Analyser différentes approches de résolution de problèmes à travers la lecture et la comparaison de code.
+
+## 🛠️ Compétences mobilisées
+
+- Typescript
+
+- Logique algorithmique
+
+- React
+
+- Organisation et structuration d’un projet
+
+- Bonnes pratiques de développement
 
 ## Les grandes lignes – Applicables à tous les checkpoints
 
