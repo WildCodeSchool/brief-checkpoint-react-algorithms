@@ -8,11 +8,30 @@ Pour connaître le score de notre équipe, nous suivons ces règles :
 Étant donné un tableau avec les résultats des matchs, écris une fonction qui renverra notre score.
 Pour exemple, si ta fonction recevait le tableau ci-dessous en paramètre, tu devrais obtenir 13 points.
 ["1:0", "2:0", "3:0", "4:4", "2:2", "3:3", "1:4", "2:3", "2:4", "3:3"]
+
+
+C'est c'etait long a comprendre mais quand on a compris la logic des points gagnée en fonctione des score de maths cela devient relativement simple!
+Je init les points a 0
+je fait une boucle qui prend chaque match 
+je split le match en 2 pour avoir les scores de chaque equipe
+je compare les scores et je met a jour le nombre de points
+je retourne le nombre de points
 */
 
 function getPoints(results: string[]): number {
-  // Ton code ici !
-  return 0;
+  let points = 0;
+  for (let i = 0; i < results.length; i++) {
+    const match = results[i];
+    const ourScore = Number.parseInt(match.split(":")[0]);
+    const opponentScore = Number.parseInt(match.split(":")[1]);
+
+    if (ourScore > opponentScore) {
+      points += 3;
+    } else if (ourScore === opponentScore) {
+      points += 1;
+    }
+  }
+  return points;
 }
 
 export default getPoints;

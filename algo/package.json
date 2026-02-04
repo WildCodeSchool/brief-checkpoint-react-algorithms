@@ -8,6 +8,10 @@
     "test": "jest --verbose"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "ts-jest": "^29.2.5"
+  },
+  "dependencies": {
+    "biome": "^0.3.3"
   }
 }
