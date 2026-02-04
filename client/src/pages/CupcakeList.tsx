@@ -39,7 +39,7 @@ import Cupcake from "../components/Cupcake";
 /* ************************************************************************* */
 
 function CupcakeList() {
-  const [accessories, setAccessories] = useState<IAccessories>();
+  const [accessories, setAccessories] = useState<IAccessories[]>();
   // Step 1: get all cupcakes
   const getAllCupcakes: CupcakeArray = useLoaderData();
   // Step 3: get all accessories
@@ -71,7 +71,11 @@ function CupcakeList() {
           {/* Step 5: use a controlled component for select */}
           Filter by{" "}
           <select id="cupcake-select">
-            <option value="">---</option>
+            {accessories?.map(({ id, name }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
             {/* Step 4: add an option for each accessory */}
           </select>
         </label>
