@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
@@ -37,9 +39,27 @@ import Cupcake from "../components/Cupcake";
 /* ************************************************************************* */
 
 function CupcakeList() {
+  const [accessories, setAccessories] = useState<IAccessories>();
   // Step 1: get all cupcakes
   const getAllCupcakes: CupcakeArray = useLoaderData();
   // Step 3: get all accessories
+  useEffect(() => {
+    const fetchAccessories = async () => {
+      try {
+        const response = await fetch(" http://localhost:3310/api/accessories ");
+        if (!response.ok) {
+          throw new Response("error", { status: 500 });
+        }
+        const accessoriesResponse = await response.json();
+        setAccessories(accessoriesResponse);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAccessories();
+  }, []);
+  console.log("accessories :>> ", accessories);
 
   // Step 5: create filter state
 
@@ -59,7 +79,7 @@ function CupcakeList() {
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
         {getAllCupcakes.map((cupcake) => (
-          <li className="cupcake-item">
+          <li key={cupcake.id} className="cupcake-item">
             <Cupcake data={cupcake} />
           </li>
         ))}
