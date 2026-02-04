@@ -10,8 +10,19 @@ sumArr( ["2", "5", "3"], ["2", "4", "9", "5", "5"] ) should return ["4", "9", "1
 */
 
 function sumArr(arrayA: string[], arrayB: string[]): string[] {
-  // Ton code ici !
-  return [];
-}
+  const result = [];
+  
+  // on prend la taille max
+  const maxLength = Math.max(arrayA.length, arrayB.length);
 
+  // pour chaque tableau on convertis en nombrre ou on met à 0, on additionne et on remet en string puis push dans le tableau
+  for (let i = 0; i < maxLength; i++) {
+    const valA = Number.parseInt(arrayA[i]) || 0;
+    const valB = Number.parseInt(arrayB[i]) || 0;
+    const sum = (valA + valB).toString();
+    result.push(sum);
+  }
+
+  return result;
+}
 export default sumArr;
