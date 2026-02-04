@@ -1,12 +1,13 @@
 // Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router";
 
 /* ************************************************************************* */
 
 import App from "./App";
 
+import CupcakeDetails from "./pages/CupcakeDetails";
 import CupcakeList from "./pages/CupcakeList";
 import Home from "./pages/Home";
 import Instructions from "./pages/Instructions";
@@ -26,20 +27,44 @@ const router = createBrowserRouter([
       },
       {
         path: "/cupcakes",
-        element: <CupcakeList />,
-        loader: async () => {
-          try {
-            const response = await fetch(
-              " http://localhost:3310/api/cupcakes ",
-            );
-            if (!response.ok) {
-              throw new Response("error", { status: 500 });
-            }
-            return response.json();
-          } catch (error) {
-            console.log(error);
-          }
-        },
+        element: <Outlet />,
+
+        children: [
+          {
+            index: true,
+            element: <CupcakeList />,
+            loader: async () => {
+              try {
+                const response = await fetch(
+                  " http://localhost:3310/api/cupcakes ",
+                );
+                if (!response.ok) {
+                  throw new Response("error", { status: 500 });
+                }
+                return response.json();
+              } catch (error) {
+                console.log(error);
+              }
+            },
+          },
+          {
+            path: ":id",
+            element: <CupcakeDetails />,
+            loader: async () => {
+              try {
+                const response = await fetch(
+                  " http://localhost:3310/api/cupcakes ",
+                );
+                if (!response.ok) {
+                  throw new Response("error", { status: 500 });
+                }
+                return response.json();
+              } catch (error) {
+                console.log(error);
+              }
+            },
+          },
+        ],
       },
     ],
   },

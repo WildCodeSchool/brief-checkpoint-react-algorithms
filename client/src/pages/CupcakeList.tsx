@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
 /* ************************************************************************* */
@@ -43,6 +43,7 @@ function CupcakeList() {
   const [accessoryId, setAccessoryId] = useState("");
   // Step 1: get all cupcakes
   const getAllCupcakes: CupcakeArray = useLoaderData();
+  console.log("getAllCupcakes :>> ", getAllCupcakes);
   // Step 3: get all accessories
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -88,13 +89,15 @@ function CupcakeList() {
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
         {getAllCupcakes
-          .filter((item) =>
+          ?.filter((item) =>
             accessoryId ? item.accessory_id === accessoryId : item,
           )
           .map((cupcake) => (
-            <li key={cupcake.id} className="cupcake-item">
-              <Cupcake data={cupcake} />
-            </li>
+            <Link key={cupcake.id} to={`/cupcakes/${cupcake.id}`}>
+              <li className="cupcake-item">
+                <Cupcake data={cupcake} />
+              </li>
+            </Link>
           ))}
         {/* Step 5: filter cupcakes before repeating */}
 
