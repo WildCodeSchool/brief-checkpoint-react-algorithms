@@ -1,12 +1,13 @@
 // Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router";
 
 /* ************************************************************************* */
 
 import App from "./App";
 
+import CupcakeDetail from "./components/CupcakeDetail";
 import CupcakeList from "./pages/CupcakeList";
 import Home from "./pages/Home";
 import Instructions from "./pages/Instructions";
@@ -26,7 +27,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/cupcakes",
-        element: <CupcakeList />,
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <CupcakeList />,
+          },
+          {
+            path: ":id",
+            element: <CupcakeDetail />,
+          },
+        ],
       },
     ],
   },
