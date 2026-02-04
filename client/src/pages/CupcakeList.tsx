@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import Cupcake from "../components/Cupcake";
 
 /* ************************************************************************* */
@@ -36,76 +36,76 @@ import Cupcake from "../components/Cupcake";
 /* if you're fine with step 1, just ignore this ;) */
 /* ************************************************************************* */
 interface ICupcakes {
-   id: number;
-   accessory_id: string;
-   accessory: string;
-   color1: string;
-   color2: string;
-   color3: string;
-   name: string;
+  id: number;
+  accessory_id: string;
+  accessory: string;
+  color1: string;
+  color2: string;
+  color3: string;
+  name: string;
 }
 function CupcakeList() {
-   // Step 1: get all cupcakes
-   const [cupcakesData, setCupcakesData] = useState<ICupcakes[]>([]);
-   const [select, setSelect] = useState<string>("");
-   useEffect(() => {
-      fetch("http://localhost:3310/api/cupcakes")
-         .then((res) => res.json())
-         .then((data) => setCupcakesData(data));
-   }, []);
+  // Step 1: get all cupcakes
+  const [cupcakesData, setCupcakesData] = useState<ICupcakes[]>([]);
+  const [select, setSelect] = useState<string>("");
+  useEffect(() => {
+    fetch("http://localhost:3310/api/cupcakes")
+      .then((res) => res.json())
+      .then((data) => setCupcakesData(data));
+  }, []);
 
-   // Step 3: get all accessories
-   const getAllAccessories: string[] = cupcakesData.map((item) => {
-      return item.accessory;
-   });
-   const cleanGetAllAcceccories = [...new Set(getAllAccessories)];
-   // Step 5: create filter state
+  // Step 3: get all accessories
+  const getAllAccessories: string[] = cupcakesData.map((item) => {
+    return item.accessory;
+  });
+  const cleanGetAllAcceccories = [...new Set(getAllAccessories)];
+  // Step 5: create filter state
 
-   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-      const newValue = e.target.value;
-      setSelect(newValue);
-   };
-   console.log(select);
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const newValue = e.target.value;
+    setSelect(newValue);
+  };
+  console.log(select);
 
-   return (
-      <>
-         <h1>My cupcakes</h1>
-         <form className="center">
-            <label htmlFor="cupcake-select">
-               {/* Step 5: use a controlled component for select DONE */}
-               Filter by{" "}
-               <select
-                  id="cupcake-select"
-                  value={select}
-                  onChange={handleSelectChange}
-               >
-                  {cleanGetAllAcceccories.map((option, index) => {
-                     return (
-                        <option key={index} value={option}>
-                           {option}
-                        </option>
-                     );
-                  })}
-                  {/* Step 4: add an option for each accessory DONE */}
-               </select>
-            </label>
-         </form>
-         <ul className="cupcake-list" id="cupcake-list">
-            {/* Step 2: repeat this block for each cupcake DONE */}
-            {/* Step 5: filter cupcakes before repeating */}
-            <li className="cupcake-item">
-               {cupcakesData
-                  .filter((cupcake) => {
-                     return select === "" || cupcake.accessory === select;
-                  })
-                  .map((cupcake) => (
-                     <Cupcake key={cupcake.id} data={cupcake} />
-                  ))}
-            </li>
-            {/* end of block */}
-         </ul>
-      </>
-   );
+  return (
+    <>
+      <h1>My cupcakes</h1>
+      <form className="center">
+        <label htmlFor="cupcake-select">
+          {/* Step 5: use a controlled component for select DONE */}
+          Filter by{" "}
+          <select
+            id="cupcake-select"
+            value={select}
+            onChange={handleSelectChange}
+          >
+            {cleanGetAllAcceccories.map((option) => {
+              return (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              );
+            })}
+            {/* Step 4: add an option for each accessory DONE */}
+          </select>
+        </label>
+      </form>
+      <ul className="cupcake-list" id="cupcake-list">
+        {/* Step 2: repeat this block for each cupcake DONE */}
+        {/* Step 5: filter cupcakes before repeating */}
+        <li className="cupcake-item">
+          {cupcakesData
+            .filter((cupcake) => {
+              return select === "" || cupcake.accessory === select;
+            })
+            .map((cupcake) => (
+              <Cupcake key={cupcake.id} data={cupcake} />
+            ))}
+        </li>
+        {/* end of block */}
+      </ul>
+    </>
+  );
 }
 
 export default CupcakeList;
