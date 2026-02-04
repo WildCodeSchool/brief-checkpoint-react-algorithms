@@ -40,9 +40,14 @@ import Cupcake from "../components/Cupcake";
 
 function CupcakeList() {
   const [accessories, setAccessories] = useState<IAccessories[]>();
+  const [accessoryId, setAccessoryId] = useState("");
   // Step 1: get all cupcakes
   const getAllCupcakes: CupcakeArray = useLoaderData();
   // Step 3: get all accessories
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setAccessoryId(e.target.value);
+  };
   useEffect(() => {
     const fetchAccessories = async () => {
       try {
@@ -59,7 +64,6 @@ function CupcakeList() {
 
     fetchAccessories();
   }, []);
-  console.log("accessories :>> ", accessories);
 
   // Step 5: create filter state
 
@@ -70,7 +74,8 @@ function CupcakeList() {
         <label htmlFor="cupcake-select">
           {/* Step 5: use a controlled component for select */}
           Filter by{" "}
-          <select id="cupcake-select">
+          <select id="cupcake-select" onChange={handleChange}>
+            <option value="">---</option>
             {accessories?.map(({ id, name }) => (
               <option key={id} value={id}>
                 {name}
@@ -82,11 +87,15 @@ function CupcakeList() {
       </form>
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
-        {getAllCupcakes.map((cupcake) => (
-          <li key={cupcake.id} className="cupcake-item">
-            <Cupcake data={cupcake} />
-          </li>
-        ))}
+        {getAllCupcakes
+          .filter((item) =>
+            accessoryId ? item.accessory_id === accessoryId : item,
+          )
+          .map((cupcake) => (
+            <li key={cupcake.id} className="cupcake-item">
+              <Cupcake data={cupcake} />
+            </li>
+          ))}
         {/* Step 5: filter cupcakes before repeating */}
 
         {/* end of block */}
