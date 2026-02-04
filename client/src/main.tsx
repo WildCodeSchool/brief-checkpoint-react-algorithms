@@ -27,6 +27,19 @@ const router = createBrowserRouter([
       {
         path: "/cupcakes",
         element: <CupcakeList />,
+        loader: async () => {
+          try {
+            const response = await fetch(
+              " http://localhost:3310/api/cupcakes ",
+            );
+            if (!response.ok) {
+              throw new Response("error", { status: 500 });
+            }
+            return response.json();
+          } catch (error) {
+            console.log(error);
+          }
+        },
       },
     ],
   },

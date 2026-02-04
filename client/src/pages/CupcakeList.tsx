@@ -1,3 +1,4 @@
+import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
 /* ************************************************************************* */
@@ -37,7 +38,8 @@ const sampleCupcakes: CupcakeArray = [
 
 function CupcakeList() {
   // Step 1: get all cupcakes
-
+  const getAllCupCake = useLoaderData();
+  console.log("getAllCupCake :>> ", getAllCupCake);
   // Step 3: get all accessories
 
   // Step 5: create filter state
