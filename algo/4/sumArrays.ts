@@ -54,8 +54,8 @@ function sumArr(arrayA: string[], arrayB: string[]): string[] {
 
   const maxLength = Math.max(arrayA.length, arrayB.length);
   return Array.from({ length: maxLength }, (_, i) => {
-    const valueArrayA = arrayA[i] ? parseInt(arrayA[i]) : 0;
-    const valueArrayB = arrayB[i] ? parseInt(arrayB[i]) : 0;
+    const valueArrayA = arrayA[i] ? Number.parseInt(arrayA[i]) : 0;
+    const valueArrayB = arrayB[i] ? Number.parseInt(arrayB[i]) : 0;
     const sum = valueArrayA + valueArrayB;
     return sum.toString();
   });
