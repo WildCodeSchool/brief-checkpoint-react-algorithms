@@ -147,6 +147,7 @@
 .eyes > div:hover {
   height: 0;
 }
+
 .eyes > div:hover::before {
   display: none;
 }
@@ -176,6 +177,78 @@
 }
 
 div.cupcake-name {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-id {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-colors {
+  color: var(--main-color);
+  text-shadow: 4px 4px 4px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(4deg);
+  text-align: center;
+}
+
+div.cupcake-color1 {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-color2 {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-color3 {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-accessory {
+  color: var(--main-color);
+  text-shadow: 4px 4px 4px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(4deg);
+  text-align: center;
+}
+
+div.cupcake-accessory-id {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-accessory-slug {
+  color: var(--main-color);
+  text-shadow: 1px 1px 1px var(--shadow);
+  text-transform: capitalize;
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+div.cupcake-accessory-name {
   color: var(--main-color);
   text-shadow: 1px 1px 1px var(--shadow);
   text-transform: capitalize;
