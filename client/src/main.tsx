@@ -27,6 +27,13 @@ const router = createBrowserRouter([
       {
         path: "/cupcakes",
         element: <CupcakeList />,
+
+        children: [
+          {
+            path: ":id",
+            element: <CupcakeList />,
+          },
+        ],
       },
     ],
   },
