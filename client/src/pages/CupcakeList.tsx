@@ -1,4 +1,5 @@
 import Cupcake from "../components/Cupcake";
+import { useEffect, useState } from "react";
 
 /* ************************************************************************* */
 const sampleCupcakes: CupcakeArray = [
@@ -36,11 +37,27 @@ const sampleCupcakes: CupcakeArray = [
 /* ************************************************************************* */
 
 function CupcakeList() {
-  // Step 1: get all cupcakes
+const [cupcakes, setCupcakes] = useState<CupcakeArray>([]);
+
+useEffect(() => {
+  const fetchCupcakes = async () => {
+    try {
+      const response = await fetch("http://localhost:3310/api/cupcakes");
+      const data = await response.json();
+      console.log(data);
+      setCupcakes(data);
+    } catch (error) {
+      console.error("Error fetching cupcakes:", error);
+    }
+  };
+
+  fetchCupcakes(); // on appelle la fonction async
+}, []);
 
   // Step 3: get all accessories
 
   // Step 5: create filter state
+console.info("CupcakeList rendu");
 
   return (
     <>
@@ -56,6 +73,13 @@ function CupcakeList() {
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
+        {/* affiche tous les cupcakes */}
+        {cupcakes.map((cupcake) => (
+          <li className="cupcake-item" key={cupcake.id}>
+            <Cupcake data={cupcake} />
+          </li>
+        ))}
+
         {/* Step 2: repeat this block for each cupcake */}
         {/* Step 5: filter cupcakes before repeating */}
         <li className="cupcake-item">
