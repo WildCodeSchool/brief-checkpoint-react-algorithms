@@ -10,10 +10,7 @@ Pour exemple, si ta fonction recevait le tableau ci-dessous en paramètre, tu de
 ["1:0", "2:0", "3:0", "4:4", "2:2", "3:3", "1:4", "2:3", "2:4", "3:3"]
 */
 
-
 function getPoints(results: string[]): number {
- 
-
   let result = 0;
   // pour chaque string je split ":" je transforme en nombre et je compare pour les point et j'ajoute dans une variable
   for (let i = 0; i < results.length; i++) {

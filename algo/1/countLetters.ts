@@ -9,19 +9,19 @@ Exemples :
 * "bbcc" et "a" -> 0
 */
 
-// function countLetters(givenString: string, letter: string): number {
-//   if (givenString === "") {
-//     return 0;
-//   }
+function countLetters(givenString: string, letter: string): number {
+  if (givenString === "") {
+    return 0;
+  }
 
-//   let count = 0;
+  const count = 0;
 
-//   for (let i = 0; i < givenString.length; i++) {
-//     if (givenString[i] === letter) {
-//       count++;
-//     }
-//   }
-//   return count;
-// }
+  for (let i = 0; i < givenString.length; i++) {
+    if (givenString[i] === letter) {
+      count + 1;
+    }
+  }
+  return count;
+}
 
 // export default countLetters;

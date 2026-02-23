@@ -15,19 +15,19 @@ function getFibonacciSequence(size: number): number[] {
     return [];
   }
 
-  if(size === 1){
-    return[0];
+  if (size === 1) {
+    return [0];
   }
-  
-  let array= [0,1];
-  
+
+  const array = [0, 1];
+
   // pour chaque el on prend l'index -1 et on additione sur l'index -2
-  for(let i=2; i< size ;i++){
-    let numberToPush = array[i - 1] + array[i - 2];
-    
+  for (let i = 2; i < size; i++) {
+    const numberToPush = array[i - 1] + array[i - 2];
+
     array.push(numberToPush);
   }
-  
+
   return array;
 }
 
